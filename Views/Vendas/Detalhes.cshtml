@@ -1,0 +1,26 @@
+@* @model SeuNamespace.Models.Venda *@
+
+@{
+    ViewData["Title"] = "Detalhes da Venda";
+}
+
+<div class="container mt-4">
+    <h2>Detalhes da Venda</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Cliente: Cliente.Nome</h5>
+            <p class="card-text">Veículo: Veiculo.Modelo</p>
+            <!-- Adicione mais informações específicas da venda aqui -->
+
+            <div class="btn-group" role="group">
+                <a class="btn btn-warning" asp-action="Editar" asp-route-id="Id">Editar</a>
+                <a class="btn btn-danger" asp-action="Excluir" asp-route-id="Id">Excluir</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a asp-action="Index" class="btn btn-primary">Voltar para a Lista de Vendas</a>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿header {
+    height: fit-content;
+    top: 0;
+    z-index: 1;
+}
+
+header nav ul {
+  width: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.2rem;
+}
+
+header nav ul li {
+  min-width: fit-content;
+  height: fit-content;
+  padding: 0 0.75rem;
+  font-size: large;
+  cursor: pointer;
+
+  list-style: none;
+}
+
+/* Adicione este trecho ao seu CSS personalizado */
+.custom-navbar {
+    background-color: #212529;
+    color: #F5F5F5; /* Substitua pela cor desejada em hexadecimal */
+}
+
+.border-top {
+border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}

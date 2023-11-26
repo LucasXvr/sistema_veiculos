@@ -1,0 +1,192 @@
+@* @model SeuNamespace.Cliente *@
+
+@{
+    ViewData["Title"] = "Adicionar Cliente";
+}
+
+<div class="container mt-4">
+    <h2>Adicionar Novo Cliente</h2>
+    <br>
+    <form asp-action="Criar" method="post">
+        <!-- Seção: Informações Pessoais -->
+        <div>
+            <h3>Informações Pessoais</h3>
+
+            <div class="form-group">
+                <label for="Nome">Nome:</label>
+                <input type="text" class="form-control" id="Nome" name="Nome" />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Email:</label>
+                <input type="text" class="form-control" id="Email" name="Email" />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="DataNascimento">Data de Nascimento:</label>
+                <input type="date" class="form-control" id="DataNascimento" name="DataNascimento" />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Foto">Foto:</label>
+                <input type="file" class="form-control" id="Foto" name="Foto" />
+                <span class="text-danger"></span>
+            </div>
+        </div>
+
+        <br>
+        <!-- Seção: Informações Pessoa -->
+        <div>
+            <h3>Informações Pessoais</h3>
+
+            <div class="form-group">
+                <label for="CpfCnpj">CPF/CNPJ:</label>
+                <input type="text" class="form-control" id="CpfCnpj" name="CpfCnpj" />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="RgIe">RG/IE:</label>
+                <input type="text" class="form-control" id="RgIe" name="RgIe" />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="NomeFantasia">Nome Fantasia:</label>
+                <input type="text" class="form-control" id="NomeFantasia" name="NomeFantasia" />
+                <span class="text-danger"></span>
+            </div>
+        </div>
+
+        <br>
+
+        <!-- Seção: Endereço -->
+        <div>
+            <h3>Endereço</h3>
+
+            <div class="row g-3">
+                <div class="col">
+                    <label for="Endereço">Endereço:</label>
+                    <input type="text" class="form-control" id="Endereço" name="Endereço" />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col-3">
+                    <label for="Número">Número:</label>
+                    <input type="text" class="form-control" id="Número" name="Número" />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col">
+                    <label for="Complemento">Complemento:</label>
+                    <input type="text" class="form-control" id="Complemento" name="Complemento" />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="Bairro">Bairro:</label>
+                    <input type="text" class="form-control" id="Bairro" name="Bairro" />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <!-- Seção: Contato -->
+        <div>
+            <h3>Contato</h3>
+
+            <div class="form-group">
+                <label for="Cep">CEP:</label>
+                <input type="text" class="form-control" id="Cep" name="Cep" />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="WhatsApp">WhatsApp:</label>
+                <input type="text" class="form-control" id="WhatsApp" name="WhatsApp" />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="row g-3">
+
+                <div class="col">
+                    <label for="Fone1">Fone-1:</label>
+                    <input type="text" class="form-control" id="Fone1" name="Fone1" />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="Fone2">Fone-2:</label>
+                    <input type="text" class="form-control" id="Fone2" name="Fone2" />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="Fone3">Fone-3:</label>
+                    <input type="text" class="form-control" id="Fone3" name="Fone3" />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <!-- Seção: Classificação -->
+        <div>
+            <h3>Classificação</h3>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="Cliente" name="Classificacao" value="Cliente">
+                <label class="form-check-label" for="Cliente">Cliente</label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="Fornecedor" name="Classificacao" value="Fornecedor">
+                <label class="form-check-label" for="Fornecedor">Fornecedor</label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="Parceiro" name="Classificacao" value="Parceiro">
+                <label class="form-check-label" for="Parceiro">Parceiro</label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="Funcionario" name="Classificacao"
+                    value="Funcionario">
+                <label class="form-check-label" for="Funcionario">Funcionário</label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="Vendedor" name="Classificacao" value="Vendedor">
+                <label class="form-check-label" for="Vendedor">Vendedor</label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="Corretor" name="Classificacao" value="Corretor">
+                <label class="form-check-label" for="Corretor">Corretor</label>
+            </div>
+
+        </div>
+
+        <br>
+        <!-- Seção: Observações -->
+        <div>
+            <h3>Observações</h3>
+
+            <div class="form-group">
+                <label for="Observacoes">Observações:</label>
+                <textarea class="form-control" id="Observacoes" name="Observacoes" rows="3"></textarea>
+            </div>
+        </div>
+
+        <br>
+
+        <!-- Botão de Submit -->
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>

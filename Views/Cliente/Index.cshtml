@@ -1,0 +1,113 @@
+@* @model List<Cliente> *@
+
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+
+<div class="container mt-4">
+    <h2>Lista de Clientes</h2>
+
+    <form method="get" class="mb-3">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Buscar por nome" name="searchString">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
+    </form>
+
+    <p>
+        <a class="btn btn-primary" asp-action="Criar">Adicionar Novo Cliente</a>
+    </p>
+
+    <div class="row">
+        @* @foreach (var cliente in Model)
+        { *@
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Nome</h5>
+                    <p class="card-text">CPF: CPF</p>
+                    <p class="card-text">E-mail: </p>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" asp-action="Detalhes" asp-route-id="">Detalhes</a>
+                        <a class="btn btn-info" asp-action="Editar" asp-route-id="">Editar</a>
+                        <a class="btn btn-danger" asp-action="Excluir" asp-route-id="">Excluir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Nome</h5>
+                    <p class="card-text">CPF: CPF</p>
+                    <p class="card-text">E-mail: </p>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" asp-action="Detalhes" asp-route-id="">Detalhes</a>
+                        <a class="btn btn-info" asp-action="Editar" asp-route-id="">Editar</a>
+                        <a class="btn btn-danger" asp-action="Excluir" asp-route-id="">Excluir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Nome</h5>
+                    <p class="card-text">CPF: CPF</p>
+                    <p class="card-text">E-mail: </p>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" asp-action="Detalhes" asp-route-id="">Detalhes</a>
+                        <a class="btn btn-info" asp-action="Editar" asp-route-id="">Editar</a>
+                        <a class="btn btn-danger" asp-action="Excluir" asp-route-id="">Excluir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Nome</h5>
+                    <p class="card-text">CPF: CPF</p>
+                    <p class="card-text">E-mail: </p>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" asp-action="Detalhes" asp-route-id="">Detalhes</a>
+                        <a class="btn btn-info" asp-action="Editar" asp-route-id="">Editar</a>
+                        <a class="btn btn-danger" asp-action="Excluir" asp-route-id="">Excluir</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Nome</h5>
+                    <p class="card-text">CPF: CPF</p>
+                    <p class="card-text">E-mail: </p>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" asp-action="Detalhes" asp-route-id="">Detalhes</a>
+                        <a class="btn btn-info" asp-action="Editar" asp-route-id="">Editar</a>
+                        <a class="btn btn-danger" asp-action="Excluir" asp-route-id="">Excluir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Nome</h5>
+                    <p class="card-text">CPF: CPF</p>
+                    <p class="card-text">E-mail: </p>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" asp-action="Detalhes" asp-route-id="">Detalhes</a>
+                        <a class="btn btn-info" asp-action="Editar" asp-route-id="">Editar</a>
+                        <a class="btn btn-danger" asp-action="Excluir" asp-route-id="">Excluir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* } *@
+    </div>
+</div>

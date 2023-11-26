@@ -1,0 +1,70 @@
+@* Compras/Index.cshtml *@
+@* @model List<Veiculo> *@
+
+@{
+    ViewData["Title"] = "Veículos Disponíveis para Compra";
+}
+
+<div class="container mt-4">
+    <h2>Veículos Disponíveis para Compra</h2>
+
+    <div class="row">
+        @* @foreach (var veiculo in Model)
+        { *@
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div>
+                    <img src="/images/Carro01.png" alt="Modelo" class="img-fluid">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Modelo</h5>
+                    <p class="card-text">Ano: Ano</p>
+                    <p class="card-text">KM: Quilometragem</p>
+                    <p class="card-text">Preço: Preco.ToString("C")</p>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" asp-action="Detalhes" asp-route-id="Id">Detalhes</a>
+                        <a class="btn btn-primary" asp-action="Comprar" asp-route-id="Id">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div>
+                    <img src="/images/Carro01.png" alt="Modelo" class="img-fluid">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Modelo</h5>
+                    <p class="card-text">Ano: Ano</p>
+                    <p class="card-text">KM: Quilometragem</p>
+                    <p class="card-text">Preço: Preco.ToString("C")</p>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" asp-action="Detalhes" asp-route-id="Id">Detalhes</a>
+                        <a class="btn btn-primary" asp-action="Comprar" asp-route-id="Id">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div>
+                    <img src="/images/Carro01.png" alt="Modelo" class="img-fluid">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Modelo</h5>
+                    <p class="card-text">Ano: Ano</p>
+                    <p class="card-text">KM: Quilometragem</p>
+                    <p class="card-text">Preço: Preco.ToString("C")</p>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" asp-action="Detalhes" asp-route-id="Id">Detalhes</a>
+                        <a class="btn btn-primary" asp-action="Comprar" asp-route-id="Id">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* } *@
+    </div>
+</div>

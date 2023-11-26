@@ -1,0 +1,75 @@
+@* @model List<SeuNamespace.Models.Venda> *@
+
+@{
+    ViewData["Title"] = "Lista de Vendas";
+}
+
+<div class="container mt-4">
+    <h2>Lista de Vendas</h2>
+
+    <form method="get" class="mb-3">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Buscar por cliente, veículo, etc." name="searchString">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
+    </form>
+
+    <p>
+        <a class="btn btn-primary" asp-action="Vender">Adicionar Nova Venda</a>
+    </p>
+
+    <div class="row">
+        @* @foreach (var venda in Model)
+        { *@
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Detalhes da Venda</h5>
+                    <p class="card-text">Cliente: Cliente.Nome</p>
+                    <p class="card-text">Veículo: Veiculo.Modelo</p>
+                    <!-- Adicione mais informações específicas da venda aqui -->
+
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" asp-action="Detalhes" asp-route-id="Id">Detalhes</a>
+                        <a class="btn btn-danger" asp-action="Excluir" asp-route-id="Id">Excluir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Detalhes da Venda</h5>
+                    <p class="card-text">Cliente: Cliente.Nome</p>
+                    <p class="card-text">Veículo: Veiculo.Modelo</p>
+                    <!-- Adicione mais informações específicas da venda aqui -->
+
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" asp-action="Detalhes" asp-route-id="Id">Detalhes</a>
+                        <a class="btn btn-danger" asp-action="Excluir" asp-route-id="Id">Excluir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Detalhes da Venda</h5>
+                    <p class="card-text">Cliente: Cliente.Nome</p>
+                    <p class="card-text">Veículo: Veiculo.Modelo</p>
+                    <!-- Adicione mais informações específicas da venda aqui -->
+
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" asp-action="Detalhes" asp-route-id="Id">Detalhes</a>
+                        <a class="btn btn-danger" asp-action="Excluir" asp-route-id="Id">Excluir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* } *@
+    </div>
+</div>

@@ -1,0 +1,41 @@
+@* @model List<SeuNamespace.Models.TrocaViewModel> *@
+
+@{
+    ViewData["Title"] = "Lista de Trocas";
+}
+
+<div class="container mt-4">
+    <h2>Lista de Trocas</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Detalhes</th>
+                <th>Data da Troca</th>
+                <!-- Adicione mais colunas conforme necessário -->
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* @foreach (var troca in Model)
+            { *@
+            <tr>
+                <td>Id</td>
+                <td>Detalhes</td>
+                <td>DataTroca</td>
+                <!-- Adicione mais colunas conforme necessário -->
+                <td>
+                    <a asp-action="Detalhes" asp-route-id="Id">Detalhes</a> |
+                    <a asp-action="Editar" asp-route-id="Id">Editar</a> |
+                    <a asp-action="Excluir" asp-route-id="Id">Excluir</a>
+                </td>
+            </tr>
+            @* } *@
+        </tbody>
+    </table>
+
+    <div class="mt-3">
+        <a asp-action="Trocar" class="btn btn-primary">Adicionar Nova Troca</a>
+    </div>
+</div>

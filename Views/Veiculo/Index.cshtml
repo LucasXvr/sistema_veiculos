@@ -1,0 +1,118 @@
+@model List<Veiculo>
+
+@{
+    ViewData["Title"] = "Lista de Veículos";
+}
+<div class="container mt-4">
+    <h2>Lista de Veículos</h2>
+
+    <form method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Buscar por marca/modelo de veículo" name="searchString">
+        <input type="hidden" name="searchField" value="MarcaModeloVeiculo" />
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </div>
+    </form>
+
+    <p>
+        <a class="btn btn-primary" asp-action="Criar">Adicionar Novo Veículo</a>
+    </p>
+    @if (Model.Count > 0)
+    {
+        <div class="row memory">
+            @foreach (var veiculo in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div id="carousel-@veiculo.Id" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                @foreach (var foto in veiculo.Fotos)
+                                {
+                                    <div class="carousel-item @(foto == veiculo.Fotos.First() ? "active" : "")">
+                                        <img src="@Url.Content($"~/images/uploads/{foto.NomeArquivo}")" alt="Foto"
+                                            class="d-block w-100 img-fluid">
+                                    </div>
+                                }
+                            </div>
+                            @if (veiculo.Fotos.Count > 1)
+                            {
+                                <a class="carousel-control-prev" href="#carousel-@veiculo.Id" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only"></span>
+                                </a>
+                                <a class="carousel-control-next" href="#carousel-@veiculo.Id" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only"></span>
+                                </a>
+                            }
+                            <ol class="carousel-indicators">
+                                @for (int i = 0; i < veiculo.Fotos.Count; i++)
+                                {
+                                    <li data-target="#carousel-@veiculo.Id" data-slide-to="@i" class="@((i == 0) ? "active" : "")">
+                                    </li>
+                                }
+                            </ol>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">@($"{veiculo.MarcaModeloVeiculo} {veiculo.FabricacaoVeiculo} - {veiculo.CategoriaVeiculo} {veiculo.CorVeiculo}")</h5>
+                            <p class="card-text">
+                                <strong>Preço de Venda:</strong> @veiculo.PrVenda.ToString("C")
+                            </p>
+                            <p class="card-text">
+                                <strong>Ano:</strong> @veiculo.ModeloVeiculo
+                            </p>
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-info" asp-action="Detalhes" asp-route-id="@veiculo.Id">Detalhes</a>
+                                <a class="btn btn-info" asp-action="Editar" asp-route-id="@veiculo.Id">Editar</a>
+                                <a class="btn btn-danger" asp-action="ConfirmarExclusao" asp-route-id="@veiculo.Id">Excluir</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div id="image-preview" class="mt-3 text-center">
+                        <img src="/images/sem-foto.png" alt="Foto" class="img-fluid mx-auto"
+                            style="max-height: auto; max-width: auto;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Nenhum veículo adicionado ainda. </h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div id="image-preview" class="mt-3 text-center">
+                        <img src="/images/sem-foto.png" alt="Foto" class="img-fluid mx-auto"
+                            style="max-height: auto; max-width: auto;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Nenhum veículo adicionado ainda. </h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div id="image-preview" class="mt-3 text-center">
+                        <img src="/images/sem-foto.png" alt="Foto" class="img-fluid mx-auto"
+                            style="max-height: auto; max-width: auto;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Nenhum veículo adicionado ainda. </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

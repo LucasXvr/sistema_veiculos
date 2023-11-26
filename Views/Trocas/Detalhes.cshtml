@@ -1,0 +1,28 @@
+@* @model SeuNamespace.Models.TrocaViewModel *@
+
+@{
+    ViewData["Title"] = "Detalhes da Troca";
+}
+
+<div class="container mt-4">
+    <h2>Detalhes da Troca</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Detalhes</h5>
+            <p class="card-text">ID: Id</p>
+            <p class="card-text">Data da Troca: DataTroca</p>
+            <p class="card-text">Outras informações: OutrasInformacoes</p>
+            <!-- Adicione mais informações específicas da troca aqui -->
+
+            <div class="btn-group" role="group">
+                <a asp-action="Editar" asp-route-id="Id">Editar</a> |
+                <a asp-action="Excluir" asp-route-id="Id">Excluir</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a asp-action="Index" class="btn btn-primary">Voltar para a Lista de Trocas</a>
+    </div>
+</div>

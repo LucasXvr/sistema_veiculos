@@ -1,0 +1,326 @@
+@model Veiculo
+
+@{
+    ViewData["Title"] = "Editar Veículo";
+}
+
+<style>
+    .edit-preview {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        margin-bottom: 20px;
+    }
+
+    .photo-card {
+        height: 350px;
+        /* Defina a altura desejada para as cartas de foto */
+        margin-bottom: 20px;
+    }
+
+    .photo-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .remove-btn {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+</style>
+
+<div class="container mt-4">
+    <h2>Editar Veículo</h2>
+
+    <form method="post" asp-action="Editar" enctype="multipart/form-data">
+        <!-- Seção: Informações Veículo -->
+        <div>
+            <h3>Informações do Veículo</h3>
+
+            <div class="form-group">
+                <label for="Id">Código:</label>
+                <input type="text" class="form-control" id="Id" name="Id" value="@Model.Id" required />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Grupo">Grupo:</label>
+                <input type="text" class="form-control" id="Grupo" name="Grupo" value="@Model.Grupo" required />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="row g-3">
+                <div class="col">
+                    <label for="Unidade">Unidade:</label>
+                    <input type="text" class="form-control" id="Unidade" name="Unidade" value="@Model.Unidade"
+                        required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="PrCusto">Preço de Custo:</label>
+                    <input type="text" class="form-control" id="PrCusto" name="PrCusto"
+                        value="@Model.PrCusto.ToString("F2")" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="Margem">Margem:</label>
+                    <input type="text" class="form-control" id="Margem" name="Margem" value="@Model.Margem" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="PrVenda">Preço de Venda:</label>
+                    <input type="text" class="form-control" id="PrVenda" name="PrVenda"
+                        value="@Model.PrVenda.ToString("F2")" required />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+
+            <div>
+                <label for="Ncm">NCM:</label>
+                <input type="text" class="form-control" id="Ncm" name="Ncm" value="@Model.Ncm" required />
+                <span class="text-danger"></span>
+            </div>
+
+            <!-- Adicione isso no seu formulário de edição -->
+            <div class="form-group">
+                <label asp-for="Fotos">Fotos:</label>
+                <input type="file" class="form-control" id="novasFotos" name="novasFotos" multiple
+                    onchange="previewNewImages()" />
+
+                <div id="image-preview" class="mt-3">
+                    <div class="row">
+                        <!-- Renderiza imagens existentes -->
+                        @foreach (var foto in Model.Fotos)
+                        {
+                            <div class="col-md-4 mb-4" data-nomearquivo="@foto.NomeArquivo">
+                                <div class="card photo-card">
+                                    <img src="@Url.Content($"~/images/uploads/{foto.NomeArquivo}")" alt="Foto"
+                                        class="card-img-top img-fluid photo-img" />
+
+                                    <!-- Adiciona o input hidden para cada foto existente -->
+                                    <input type="hidden" name="fotosExistente" value="@foto.NomeArquivo" />
+
+                                    <!-- Adicione ao botão de remover no loop de fotos existentes -->
+                                    <button type="button" class="btn btn-danger mt-2"
+                                        onclick="removeImage('@foto.NomeArquivo')">Remover</button>
+                                </div>
+                            </div>
+                        }
+                        <!-- Renderiza previews para novas imagens -->
+                        <div id="preview-container" class="edit-preview"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row g-3">
+                <div class="col">
+                    <label for="Ativo">Ativo:</label>
+                    <input type="text" class="form-control" id="Ativo" name="Ativo" value="@Model.Ativo" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="CFOP">CFOP:</label>
+                    <input type="text" class="form-control" id="CFOP" name="CFOP" value="@Model.CFOP" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="CEST">CEST:</label>
+                    <input type="text" class="form-control" id="CEST" name="CEST" value="@Model.CEST" required />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col">
+                    <label for="PrVendaPrazo">Preço de Venda à Prazo:</label>
+                    <input type="text" class="form-control" id="PrVendaPrazo" name="PrVendaPrazo"
+                        value="@Model.PrVendaPrazo" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="DtCadastro">Data de Cadastro:</label>
+                    <input type="date" class="form-control" id="DtCadastro" name="DtCadastro"
+                        value="@Model.DtCadastro.ToString("yyyy-MM-dd")" required />
+                    <span class="text-danger"></span>
+                    <script>
+                        console.log("Valor de DtCadastro:", @Model.DtCadastro);
+                    </script>
+
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <!-- Seção: Documentação Veículo -->
+        <div>
+            <h3>Documentação do Veículo</h3>
+
+            <div class="row g-3">
+                <div class="col">
+                    <label for="ViaReciboVeiculo">Via Recibo do Veiculo:</label>
+                    <input type="text" class="form-control" id="ViaReciboVeiculo" name="ViaReciboVeiculo"
+                        value="@Model.ViaReciboVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="RenavamVeiculo">Renavam do Veículo:</label>
+                    <input type="text" class="form-control" id="RenavamVeiculo" name="RenavamVeiculo"
+                        value="@Model.RenavamVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="RegistroVeiculo">Registro do Veículo:</label>
+                    <input type="text" class="form-control" id="RegistroVeiculo" name="RegistroVeiculo"
+                        value="@Model.RegistroVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="RntrcVeiculo">RNTRC Veículo:</label>
+                    <input type="text" class="form-control" id="RntrcVeiculo" name="RntrcVeiculo"
+                        value="@Model.RntrcVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="row g-3">
+
+                <div class="col">
+                    <label for="ExerEmisDocVeiculo">Exercício de Emissão de Documento de Veículo:</label>
+                    <input type="text" class="form-control" id="ExerEmisDocVeiculo" name="ExerEmisDocVeiculo"
+                        value="@Model.ExerEmisDocVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="PlacaVeiculo">Placa do Veículo:</label>
+                    <input type="text" class="form-control" id="PlacaVeiculo" name="PlacaVeiculo"
+                        value="@Model.PlacaVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="ChassiVeiculo">Chassi do Veículo:</label>
+                    <input type="text" class="form-control" id="ChassiVeiculo" name="ChassiVeiculo"
+                        value="@Model.ChassiVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+
+            </div>
+        </div>
+
+        <br>
+        <!-- Seção: Características do Veículo -->
+        <div>
+            <h3>Características do Veículo</h3>
+
+            <div class="row g-3">
+
+                <div class="col">
+                    <label for="CombustivelVeiculo">Combustível do Veículo:</label>
+                    <input type="text" class="form-control" id="CombustivelVeiculo" name="CombustivelVeiculo"
+                        value="@Model.CombustivelVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="FabricacaoVeiculo">Fabricação do Veículo:</label>
+                    <input type="text" class="form-control" id="FabricacaoVeiculo" name="FabricacaoVeiculo"
+                        value="@Model.FabricacaoVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="ModeloVeiculo">Modelo do Veículo:</label>
+                    <input type="text" class="form-control" id="ModeloVeiculo" name="ModeloVeiculo"
+                        value="@Model.ModeloVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col">
+                    <label for="CorVeiculo">Cor do Veículo:</label>
+                    <input type="text" class="form-control" id="CorVeiculo" name="CorVeiculo" value="@Model.CorVeiculo"
+                        required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="CategoriaVeiculo">Categoria do Veículo:</label>
+                    <input type="text" class="form-control" id="CategoriaVeiculo" name="CategoriaVeiculo"
+                        value="@Model.CategoriaVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col">
+                    <label for="EmissaoDocumentoVeiculo">Emissão do Documento do Veículo:</label>
+                    <input type="date" class="form-control" id="EmissaoDocumentoVeiculo" name="EmissaoDocumentoVeiculo"
+                        value="@Model.EmissaoDocumentoVeiculo.ToString("yyyy-MM-dd")" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="LocalRegistroVeiculo">Local do Registro do Veículo:</label>
+                    <input type="text" class="form-control" id="LocalRegistroVeiculo" name="LocalRegistroVeiculo"
+                        value="@Model.LocalRegistroVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="CapPotCilVeiculo">Capacidade, Potencia e Cilindrada do Veículo:</label>
+                    <input type="text" class="form-control" id="CapPotCilVeiculo" name="CapPotCilVeiculo"
+                        value="@Model.CapPotCilVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col">
+                    <label for="MarcaModeloVeiculo">Marca Modelo do Veículo:</label>
+                    <input type="text" class="form-control" id="MarcaModeloVeiculo" name="MarcaModeloVeiculo"
+                        value="@Model.MarcaModeloVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="EspecieVeiculo">Especie do Veículo:</label>
+                    <input type="text" class="form-control" id="EspecieVeiculo" name="EspecieVeiculo"
+                        value="@Model.EspecieVeiculo" required />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <!-- Seção: Observações -->
+        <div>
+            <h3>Observações</h3>
+
+            <div class="form-group">
+                <label for="Observacoes">Observações:</label>
+                <textarea class="form-control" id="Observacoes" name="Observacoes"
+                    rows="3">@Model.Observacoes</textarea>
+            </div>
+        </div>
+        <br>
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a class="btn btn-secondary" asp-action="Detalhes" asp-route-id="@Model.Id">Cancelar</a>
+    </form>
+</div>

@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Realizar Compra";
+}
+
+<div class="container mt-4">
+    <h2>Realizar Compra</h2>
+
+    <form method="post">
+        <div class="form-group">
+            <label for="cliente">Cliente:</label>
+            <select class="form-control" id="cliente" name="cliente">
+                <!-- Lista de clientes (pode ser populada dinamicamente) -->
+                <option value="cliente1">Cliente 1</option>
+                <option value="cliente2">Cliente 2</option>
+                <!-- Adicione mais opções conforme necessário -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="veiculo">Veículo:</label>
+            <select class="form-control" id="veiculo" name="veiculo">
+                <!-- Lista de veículos disponíveis (pode ser populada dinamicamente) -->
+                <option value="veiculo1">Veículo 1</option>
+                <option value="veiculo2">Veículo 2</option>
+                <!-- Adicione mais opções conforme necessário -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="dataCompra">Data da Compra:</label>
+            <input type="date" class="form-control" id="dataCompra" name="dataCompra" required>
+        </div>
+
+        <!-- Adicione mais campos conforme necessário (preço, método de pagamento, etc.) -->
+
+        <button type="submit" class="btn btn-primary">Finalizar Compra</button>
+    </form>
+</div>

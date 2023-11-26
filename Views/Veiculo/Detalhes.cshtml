@@ -1,0 +1,199 @@
+@model Veiculo
+
+@{
+    ViewData["Title"] = "Detalhes do Veículo";
+}
+
+<style>
+    .photo-card {
+        height: 220px;
+        /* Defina a altura desejada para as cartas de foto */
+        margin-bottom: 20px;
+    }
+
+    .photo-img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+    }
+</style>
+
+<div class="container mt-4">
+    <h2>Detalhes do Veículo</h2>
+
+    <ul class="nav nav-tabs" id="myTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="informacoes-tab" data-toggle="tab" href="#informacoes"
+                role="tab">Informações</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="fotos-tab" data-toggle="tab" href="#fotos" role="tab">Fotos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="documentacao-tab" data-toggle="tab" href="#documentacao" role="tab">Documentação</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="caracteristicas-tab" data-toggle="tab" href="#caracteristicas"
+                role="tab">Características</a>
+        </li>
+    </ul>
+
+    <div class="tab-content mt-2">
+        <!-- Informações do Veículo -->
+        <div class="tab-pane fade show active" id="informacoes" role="tabpanel">
+            <div class="card p-4">
+                <!-- Seção: Informações Veículo -->
+                <div>
+                    <h3>Informações do Veículo</h3>
+                    <h5 class="card-title">Código: @Model.Id</h5>
+                    <p class="card-text">
+                        <strong>Grupo:</strong> @Model.Grupo
+                    </p>
+                    <p class="card-text">
+                        <strong>Unidade:</strong> @Model.Unidade
+                    </p>
+                    <p class="card-text">
+                        <strong>Preço de Custo:</strong> @Model.PrCusto.ToString("C")
+                    </p>
+                    <p class="card-text">
+                        <strong>Margem:</strong> @Model.Margem
+                    </p>
+                    <p class="card-text">
+                        <strong>Preço da Venda:</strong> @Model.PrVenda.ToString("C")
+                    </p>
+                    <p class="card-text">
+                        <strong>NCM:</strong> @Model.Ncm
+                    </p>
+                    <p class="card-text">
+                        <strong>Ativo:</strong> @Model.Ativo
+                    </p>
+                    <p class="card-text">
+                        <strong>CFOP:</strong> @Model.CFOP
+                    </p>
+                    <p class="card-text">
+                        <strong>CEST:</strong> @Model.CEST
+                    </p>
+                    <p class="card-text">
+                        <strong>Preço de Venda à Prazo:</strong> @Model.PrVendaPrazo
+                    </p>
+                    <p class="card-text">
+                        <strong>Data de Cadastro:</strong> @Model.DtCadastro
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Fotos do Veículo -->
+        <div class="tab-pane fade" id="fotos" role="tabpanel">
+            <div class="row">
+                <!-- Seção: Fotos do Veículo -->
+                <div>
+                    <h3>Fotos do Veículo</h3>
+
+                    @if (Model.Fotos != null && Model.Fotos.Any())
+                    {
+                        <div class="row">
+                            @foreach (var foto in Model.Fotos)
+                            {
+                                <div class="col-md-4 mb-4">
+                                    <div class="card photo-card">
+                                        <img src="@Url.Content($"~/images/uploads/{foto.NomeArquivo}")" alt="Foto"
+                                            class="card-img-top img-fluid photo-img">
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p>Nenhuma foto disponível para este veículo.</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Documentação do Veículo -->
+        <div class="tab-pane fade" id="documentacao" role="tabpanel">
+            <div class="card p-4">
+                <!-- Seção: Documentação Veículo -->
+                <div>
+                    <h3>Documentação do Veículo</h3>
+
+                    <p class="card-text">
+                        <strong>Via Recibo do Veiculo:</strong> @Model.ViaReciboVeiculo
+                    </p>
+                    <p class="card-text">
+                        <strong>Renavam do Veículo:</strong> @Model.RenavamVeiculo
+                    </p>
+                    <p class="card-text">
+                        <strong>Registro do Veículo:</strong> @Model.RegistroVeiculo
+                    </p>
+                    <p class="card-text">
+                        <strong>RNTRC do Veículo:</strong> @Model.RntrcVeiculo
+                    </p>
+                    <p class="card-text">
+                        <strong>Exercício de Emissão de Documento de Veículo:</strong> @Model.ExerEmisDocVeiculo
+                    </p>
+                    <p class="card-text">
+                        <strong>Placa do Veículo:</strong> @Model.PlacaVeiculo
+                    </p>
+                    <p class="card-text">
+                        <strong>Chassi do Veículo:</strong> @Model.ChassiVeiculo
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Características do Veículo -->
+        <div class="tab-pane fade" id="caracteristicas" role="tabpanel">
+            <div class="card p-4">
+                <!-- Seção: Características do Veículo -->
+                <h3>Características do Veículo</h3>
+
+                <p class="card-text">
+                    <strong>Combustível do Veículo:</strong> @Model.CombustivelVeiculo
+                </p>
+                <p class="card-text">
+                    <strong>Fabricação do Veículo:</strong> @Model.FabricacaoVeiculo
+                </p>
+                <p class="card-text">
+                    <strong>Modelo do Veículo:</strong> @Model.ModeloVeiculo
+                </p>
+                <p class="card-text">
+                    <strong>Cor do Veículo:</strong> @Model.CorVeiculo
+                </p>
+                <p class="card-text">
+                    <strong>Categoria do Veículo:</strong> @Model.CategoriaVeiculo
+                </p>
+                <p class="card-text">
+                    <strong>Emissão do Documento do Veículo:</strong> @Model.EmissaoDocumentoVeiculo
+                </p>
+                <p class="card-text">
+                    <strong>Local do Registro do Veículo:</strong> @Model.LocalRegistroVeiculo
+                </p>
+                <p class="card-text">
+                    <strong>Capacidade, Potencia e Cilindrada do Veículo:</strong> @Model.CapPotCilVeiculo
+                </p>
+                <p class="card-text">
+                    <strong>Marca Modelo do Veículo:</strong> @Model.MarcaModeloVeiculo
+                </p>
+                <p class="card-text">
+                    <strong>Especie do Veículo:</strong> @Model.EspecieVeiculo
+                </p>
+                <p class="card-text">
+                    <strong>Observações:</strong> @Model.Observacoes
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn-group mt-3" role="group">
+        <a class="btn btn-info" asp-action="Editar" asp-route-id="@Model.Id">Editar</a>
+        <a class="btn btn-danger" asp-action="ConfirmarExclusao" asp-route-id="@Model.Id">Excluir</a>
+    </div>
+
+    <div class="mt-3">
+        <a class="btn btn-secondary" asp-action="Index">Voltar à Lista</a>
+    </div>
+</div>
