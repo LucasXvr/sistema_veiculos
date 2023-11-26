@@ -8,7 +8,19 @@ public class ApplicationContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=app.db");
+        if (!optionsBuilder.IsConfigured)
+        {
+            // Substitua com a sua string de conexão.
+            var connectionString = "server=localhost;user=root;password=123456;database=SistemaVeiculos";
+
+            // Use 'MySqlServerVersion' para MySQL.
+            var serverVersion = ServerVersion.AutoDetect(connectionString);
+
+            optionsBuilder.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 29)))
+                .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
+                .EnableSensitiveDataLogging()
+                .EnableDetailedErrors();
+        }
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

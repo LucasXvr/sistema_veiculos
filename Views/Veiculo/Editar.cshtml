@@ -69,7 +69,8 @@
 
                 <div class="col">
                     <label for="Margem">Margem:</label>
-                    <input type="text" class="form-control" id="Margem" name="Margem" value="@Model.Margem" required />
+                    <input type="text" class="form-control" id="Margem" name="Margem"
+                        value="@String.Format("{0:0.00}", Model.Margem)" required />
                     <span class="text-danger"></span>
                 </div>
 
