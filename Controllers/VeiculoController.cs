@@ -110,10 +110,14 @@ public class VeiculoController : Controller
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Ocorreu uma exceção: {ex.Message}");
-            Console.WriteLine($"StackTrace: {ex.StackTrace}");
+            // Log do erro
+            _logger.LogError($"Erro ao executar o método Criar: {ex.Message}");
+            _logger.LogError($"StackTrace: {ex.StackTrace}");
 
-            TempData["MensagemErro"] = "Ocorreu uma exceção ao criar o veículo.";
+            // Mensagem de erro mais detalhada para o usuário
+            TempData["MensagemErro"] = $"Ocorreu um erro ao criar o veículo: {ex.Message}";
+
+            // Redirecionar para a página de erro
             return View("Error");
         }
     }
