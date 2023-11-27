@@ -10,9 +10,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
-    <environmentVariables>
-      <environmentVariable name="ASPNETCORE_ENVIRONMENT" value="Development" />
-    </environmentVariables>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
