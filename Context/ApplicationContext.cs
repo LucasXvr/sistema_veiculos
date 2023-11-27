@@ -6,22 +6,42 @@ public class ApplicationContext : DbContext
     public DbSet<Veiculo> Veiculo { get; set; }
     public DbSet<Foto> Fotos { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    // private readonly IConfiguration _configuration;
+
+    // public ApplicationContext(DbContextOptions<ApplicationContext> options, IConfiguration configuration)
+    //     : base(options)
+    // {
+    //     _configuration = configuration;
+    // }
+
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    // {
+    //     if (!optionsBuilder.IsConfigured)
+    //     {
+    //         try
+    //         {
+    //             var connectionString = _configuration.GetConnectionString("AZURE_MYSQL_CONNECTIONSTRING");
+
+    //             optionsBuilder.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 29)))
+    //                 .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
+    //                 .EnableSensitiveDataLogging()
+    //                 .EnableDetailedErrors();
+
+    //             optionsBuilder.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 29)),
+    //                 mySqlOptions => mySqlOptions.EnableRetryOnFailure());
+    //         }
+    //         catch (Exception ex)
+    //         {
+    //             Console.WriteLine($"Erro ao configurar o DbContext: {ex.Message}");
+    //             throw;
+    //         }
+    //     }
+    // }
+    public ApplicationContext(DbContextOptions<ApplicationContext> options)
+            : base(options)
     {
-        if (!optionsBuilder.IsConfigured)
-        {
-            // Substitua com a sua string de conexão.
-            var connectionString = "MySqlConnection";
-
-            // Use 'MySqlServerVersion' para MySQL.
-            var serverVersion = ServerVersion.AutoDetect(connectionString);
-
-            optionsBuilder.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 29)))
-                .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
-                .EnableSensitiveDataLogging()
-                .EnableDetailedErrors();
-        }
     }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Foto>()

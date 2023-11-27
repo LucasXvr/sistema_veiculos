@@ -1,9 +1,26 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Logging.AddConsole();
 
-// Add services to the container.
-builder.Services.AddDbContext<ApplicationContext>();
+// Altere a configuração da string de conexão do MySQL
+var connectionString = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING");
+
+builder.Services.AddDbContext<ApplicationContext>(options =>
+    options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 29)))
+        .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
+        .EnableSensitiveDataLogging()
+        .EnableDetailedErrors());
+
+// Substitua o cache em memória pelo cache Redis
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
+    options.InstanceName = "SampleInstance";
+});
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IFileStorageService, FileStorageService>();
 var app = builder.Build();
