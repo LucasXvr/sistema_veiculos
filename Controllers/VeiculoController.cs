@@ -96,6 +96,14 @@ public class VeiculoController : Controller
                 TempData["MensagemSucesso"] = "Veículo salvo com sucesso!";
                 return RedirectToAction("Detalhes", new { id = veiculo.Id });
             }
+            else
+            {
+                // Log dos erros de validação
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    _logger.LogError($"Erro de validação: {error.ErrorMessage}");
+                }
+            }
 
 
             // Se houver erros de validação, imprima os detalhes no console
