@@ -11,7 +11,7 @@ public class ApplicationContext : DbContext
         if (!optionsBuilder.IsConfigured)
         {
             // Substitua com a sua string de conexão.
-            var connectionString = "server=localhost;user=root;password=123456;database=SistemaVeiculos";
+            var connectionString = "MySqlConnection";
 
             // Use 'MySqlServerVersion' para MySQL.
             var serverVersion = ServerVersion.AutoDetect(connectionString);
