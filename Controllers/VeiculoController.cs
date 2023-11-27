@@ -196,8 +196,9 @@ public class VeiculoController : Controller
         }
         catch (Exception ex)
         {
-            // Lógica para lidar com exceções, se necessário
-            TempData["MensagemErro"] = "Ocorreu uma exceção ao editar o veículo.";
+            _logger.LogError(ex, "Ocorreu uma exceção ao criar o veículo: {Message}", ex.Message);
+
+            TempData["MensagemErro"] = $"Ocorreu uma exceção ao criar o veículo: {ex.Message}";
             return View("Error");
         }
     }
@@ -219,16 +220,27 @@ public class VeiculoController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Excluir(int id)
     {
-        var veiculo = _context.Veiculo.Find(id);
-
-        if (veiculo == null)
+        try
         {
-            return NotFound();
+            var veiculo = _context.Veiculo.Find(id);
+
+            if (veiculo == null)
+            {
+                return NotFound();
+            }
+
+            _context.Veiculo.Remove(veiculo);
+            _context.SaveChanges();
+
+            TempData["MensagemSucesso"] = "Veículo excluído com sucesso!";
+            return RedirectToAction("Index");
         }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Ocorreu uma exceção ao excluir o veículo: {Message}", ex.Message);
 
-        _context.Veiculo.Remove(veiculo);
-        _context.SaveChanges();
-
-        return RedirectToAction("Index");
+            TempData["MensagemErro"] = $"Ocorreu uma exceção ao excluir o veículo: {ex.Message}";
+            return View("Error");
+        }
     }
 }
