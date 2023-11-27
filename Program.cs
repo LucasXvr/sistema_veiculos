@@ -5,21 +5,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Logging.AddConsole();
 
+// Configuração para ler do appsettings.json e appsettings.secret.json
+builder.Configuration.AddJsonFile("appsettings.json");
+builder.Configuration.AddJsonFile("appsettings.secret.json", optional: true, reloadOnChange: true);
+
 // Altere a configuração da string de conexão do MySQL
-var connectionString = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING");
+var connectionString = builder.Configuration.GetConnectionString("Default");
 
 builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 29)))
         .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
         .EnableSensitiveDataLogging()
         .EnableDetailedErrors());
-
-// Substitua o cache em memória pelo cache Redis
-builder.Services.AddStackExchangeRedisCache(options =>
-{
-    options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
-    options.InstanceName = "SampleInstance";
-});
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IFileStorageService, FileStorageService>();
