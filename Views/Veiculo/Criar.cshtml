@@ -6,10 +6,16 @@
 
 <div class="container mt-4">
 
-    @if (TempData["MensagemErro"] != null)
+    @if (!ViewData.ModelState.IsValid)
     {
         <div class="alert alert-danger" role="alert">
-            @TempData["MensagemErro"]
+            <p>Por favor, corrija os seguintes erros:</p>
+            <ul>
+                @foreach (var modelError in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@modelError.ErrorMessage</li>
+                }
+            </ul>
         </div>
     }
 
@@ -22,7 +28,7 @@
 
             <div class="form-group">
                 <label for="Id">Código:</label>
-                <input type="text" class="form-control" id="Id" name="Id" required />
+                <input type="text" class="form-control" id="Id" name="Id" />
                 <span class="text-danger">@Html.ValidationMessageFor(model => model.Id)</span>
             </div>
 
@@ -107,7 +113,7 @@
 
                 <div class="col">
                     <label for="DtCadastro">Data de Cadastro:</label>
-                    <input type="date" class="form-control" id="DtCadastro" name="DtCadastro" required />
+                    <input type="date" class="form-control" id="DtCadastro" name="DtCadastro" />
                     <span class="text-danger"></span>
                 </div>
             </div>

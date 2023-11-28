@@ -6,8 +6,6 @@ using System.Numerics;
 public class Veiculo
 {
     [Key]
-
-    [Required(ErrorMessage = "O campo Id é obrigatório.")]
     public int Id { get; set; }
 
     [Required(ErrorMessage = "O campo Grupo é obrigatório.")]
@@ -27,6 +25,7 @@ public class Veiculo
 
     [Required(ErrorMessage = "O campo NCM é obrigatório.")]
     public string Ncm { get; set; }
+
     public List<Foto> Fotos { get; set; } = new List<Foto>();
 
     [Required(ErrorMessage = "O campo Ativo é obrigatório.")]
