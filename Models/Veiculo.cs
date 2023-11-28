@@ -15,7 +15,8 @@ public class Veiculo
     public string Unidade { get; set; }
 
     [Required(ErrorMessage = "O campo Preço de Custo é obrigatório.")]
-    [DataType(DataType.Currency, ErrorMessage = "O valor inserido não é válido para Preço de Custo.")]
+    [RegularExpression(@"^\d+(\,\d{1,2})?$", ErrorMessage = "O valor inserido não é válido para Preço de Custo.")]
+    [DataType(DataType.Currency)]
     [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
     public decimal PrCusto { get; set; }
 
@@ -23,7 +24,8 @@ public class Veiculo
     public decimal Margem { get; set; }
 
     [Required(ErrorMessage = "O campo Preço de Venda é obrigatório.")]
-    [DataType(DataType.Currency, ErrorMessage = "O valor inserido não é válido para Preço de Venda.")]
+    [RegularExpression(@"^\d+(\,\d{1,2})?$", ErrorMessage = "O valor inserido não é válido para Preço de Venda.")]
+    [DataType(DataType.Currency)]
     [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
     public decimal PrVenda { get; set; }
 
@@ -45,6 +47,8 @@ public class Veiculo
     public string PrVendaPrazo { get; set; }
 
     [Required(ErrorMessage = "O campo Data de Cadastro é obrigatório.")]
+    [DataType(DataType.Date)]
+    [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
     public DateTime DtCadastro { get; set; }
 
     [Required(ErrorMessage = "O campo Via do Recibo do Veículo  é obrigatório.")]
@@ -84,6 +88,8 @@ public class Veiculo
     public string CategoriaVeiculo { get; set; }
 
     [Required(ErrorMessage = "O campo Emissão do Documento do Veículo é obrigatório.")]
+    [DataType(DataType.Date)]
+    [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
     public DateTime EmissaoDocumentoVeiculo { get; set; }
 
     [Required(ErrorMessage = "O campo Local do Registro do Veículo é obrigatório.")]
