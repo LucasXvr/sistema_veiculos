@@ -70,9 +70,11 @@ namespace SistemaVeiculos.Migrations
                     Grupo = table.Column<int>(type: "int", nullable: false),
                     Unidade = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PrCusto = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    PrCusto = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Margem = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
-                    PrVenda = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    PrVenda = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Ncm = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Ativo = table.Column<string>(type: "longtext", nullable: false)

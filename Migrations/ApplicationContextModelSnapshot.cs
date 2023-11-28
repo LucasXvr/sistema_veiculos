@@ -201,11 +201,13 @@ namespace SistemaVeiculos.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<decimal>("PrCusto")
-                        .HasColumnType("decimal(65,30)");
+                    b.Property<string>("PrCusto")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
-                    b.Property<decimal>("PrVenda")
-                        .HasColumnType("decimal(65,30)");
+                    b.Property<string>("PrVenda")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("PrVendaPrazo")
                         .IsRequired()
