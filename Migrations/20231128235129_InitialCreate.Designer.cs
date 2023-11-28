@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace SistemaVeiculos.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20231128205131_InitialCreate")]
+    [Migration("20231128235129_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
