@@ -1,4 +1,4 @@
-@* @model Cliente *@
+@model Cliente
 
 @{
     ViewData["Title"] = "Detalhes do Cliente";
@@ -7,28 +7,106 @@
 <div class="container mt-4">
     <h2>Detalhes do Cliente</h2>
 
-    <dl class="row">
-        <dt class="col-sm-2">ID:</dt>
-        <dd class="col-sm-10">Id</dd>
+    <div class="tab-content mt-2">
+        <!-- Informações do Veículo -->
+        <div class="tab-pane fade show active" role="tabpanel">
+            <div class="card p-4">
+                <!-- Seção: Informações Veículo -->
+                <div>
+                    <h3>Informações do Cliente</h3>
+                    <h5 class="card-title">Código: @Model.Id</h5>
+                    <p class="card-text">
+                        <strong>Nome:</strong> @Model.Nome
+                    </p>
+                    <p class="card-text">
+                        <strong>Email:</strong> @Model.Email
+                    </p>
+                    <p class="card-text">
+                        <strong>Data de Nascimento:</strong> @Model.DataNascimento
+                    </p>
+                    <p class="card-text">
+                        <strong>CPF/CNPJ:</strong> @Model.CPFCNPJ
+                    </p>
+                    <p class="card-text">
+                        <strong>RG/IE:</strong> @Model.RGIE
+                    </p>
+                    <p class="card-text">
+                        <strong>Nome Fantasia:</strong> @Model.NomeFantasia
+                    </p>
+                    <p class="card-text">
+                        <strong>Endereço:</strong> @Model.Endereco
+                    </p>
+                    <p class="card-text">
+                        <strong>Número:</strong> @Model.Numero
+                    </p>
+                    <p class="card-text">
+                        <strong>Complemento:</strong> @Model.Complemento
+                    </p>
+                    <p class="card-text">
+                        <strong>Bairro:</strong> @Model.Bairro
+                    </p>
+                    <p class="card-text">
+                        <strong>CEP:</strong> @Model.CEP
+                    </p>
 
-        <dt class="col-sm-2">Nome:</dt>
-        <dd class="col-sm-10">Nome</dd>
+                    <h3>Endereço</h3>
 
-        <dt class="col-sm-2">E-mail:</dt>
-        <dd class="col-sm-10">Email</dd>
+                    <p class="card-text">
+                        <strong>Endereço:</strong> @Model.Endereco
+                    </p>
 
-        <dt class="col-sm-2">Telefone:</dt>
-        <dd class="col-sm-10">Telefone</dd>
+                    <p class="card-text">
+                        <strong>Número:</strong> @Model.Numero
+                    </p>
 
-        <dt class="col-sm-2">Endereço:</dt>
-        <dd class="col-sm-10">Endereco</dd>
+                    <p class="card-text">
+                        <strong>Complemento:</strong> @Model.Complemento
+                    </p>
 
-        <!-- Adicione mais campos conforme necessário -->
+                    <p class="card-text">
+                        <strong>Bairro:</strong> @Model.Bairro
+                    </p>
 
-    </dl>
+                    <p class="card-text">
+                        <strong>CEP:</strong> @Model.CEP
+                    </p>
 
-    <div>
-        <a class="btn btn-primary" asp-action="Editar" asp-route-id="Id">Editar</a>
-        <a class="btn btn-secondary" asp-action="Index">Voltar para a Lista</a>
+                    <p class="card-text">
+                        <strong>WhatsApp:</strong> @Model.WhatsApp
+                    </p>
+
+                    <p class="card-text">
+                        <strong>Fone-1:</strong> @Model.Fone1
+                    </p>
+
+                    <p class="card-text">
+                        <strong>Fone-2:</strong> @Model.Fone2
+                    </p>
+
+                    <p class="card-text">
+                        <strong>Fone-3:</strong> @Model.Fone3
+                    </p>
+
+                    <h3>Classificação</h3>
+                    <p class="card-text">
+                        <strong>Classificacao:</strong> @Model.Classificacao
+                    </p>
+                    <h3>Observações</h3>
+
+                    <p class="card-text">
+                        <strong>Observacões:</strong> @Model.Observacoes
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="btn-group mt-3" role="group">
+            <a class="btn btn-info" asp-action="Editar" asp-route-id="@Model.Id">Editar</a>
+            <a class="btn btn-danger" asp-action="ConfirmarExclusao" asp-route-id="@Model.Id">Excluir</a>
+        </div>
+
+        <div class="mt-3">
+            <a class="btn btn-secondary" asp-action="Index">Voltar para a Lista</a>
+        </div>
     </div>
-</div>

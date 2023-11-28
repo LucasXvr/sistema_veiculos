@@ -1,4 +1,4 @@
-@* @model Cliente *@
+@model Cliente
 
 @{
     ViewData["Title"] = "Editar Cliente";
@@ -7,30 +7,183 @@
 <div class="container mt-4">
     <h2>Editar Cliente</h2>
 
-    <form asp-action="Editar" method="post">
-        <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input type="text" class="form-control" id="nome" name="nome" value="Nome" required>
+    <form method="post" asp-action="Editar" enctype="multipart/form-data">
+        <!-- Seção: Informações Pessoais -->
+        <div>
+            <h3>Informações Pessoais</h3>
+
+            <div class="form-group">
+                <label for="ClienteId">Código:</label>
+                <input type="text" class="form-control" id="ClienteId" name="ClienteId" value="@Model.Id" />
+                <span class="text-danger">@Html.ValidationMessageFor(model => model.Id)</span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Nome"></label>
+                <input asp-for="Nome" class="form-control" value="@Model.Nome" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Email:</label>
+                <input type="text" class="form-control" id="Email" name="Email" value="@Model.Email" />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="DataNascimento">Data de Nascimento:</label>
+                <input type="date" class="form-control" id="DataNascimento" name="DataNascimento"
+                    value="@Model.DataNascimento.ToString("yyyy-MM-dd")" />
+                <span class="text-danger"></span>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="email">E-mail:</label>
-            <input type="email" class="form-control" id="email" name="email" value="Email" required>
+        <br>
+        <!-- Seção: Informações Pessoais -->
+        <div>
+
+            <div class="form-group">
+                <label for="CpfCnpj">CPF/CNPJ:</label>
+                <input type="text" class="form-control" id="CpfCnpj" name="CpfCnpj" value="@Model.CPFCNPJ" />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="RgIe">RG/IE:</label>
+                <input type="text" class="form-control" id="RgIe" name="RgIe" value="@Model.RGIE" />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="NomeFantasia">Nome Fantasia:</label>
+                <input type="text" class="form-control" id="NomeFantasia" name="NomeFantasia"
+                    value="@Model.NomeFantasia" />
+                <span class="text-danger"></span>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="telefone">Telefone:</label>
-            <input type="text" class="form-control" id="telefone" name="telefone" value="Telefone" required>
+        <br>
+
+        <!-- Seção: Endereço -->
+        <div>
+            <h3>Endereço</h3>
+
+            <div class="row g-3">
+                <div class="col">
+                    <label for="Endereco">Endereço:</label>
+                    <input type="text" class="form-control" id="Endereco" name="Endereco" value="@Model.Endereco" />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col-3">
+                    <label for="Numero">Número:</label>
+                    <input type="text" class="form-control" id="Numero" name="Numero" value="@Model.Numero" />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col">
+                    <label for="Complemento">Complemento:</label>
+                    <input type="text" class="form-control" id="Complemento" name="Complemento"
+                        value="@Model.Complemento" />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="Bairro">Bairro:</label>
+                    <input type="text" class="form-control" id="Bairro" name="Bairro" value="@Model.Bairro" />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="CEP">CEP:</label>
+                    <input type="text" class="form-control" id="CEP" name="CEP" value="@Model.CEP" />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="endereco">Endereço:</label>
-            <textarea class="form-control" id="endereco" name="endereco" rows="3" required>Endereco</textarea>
+        <br>
+        <!-- Seção: Contato -->
+        <div>
+            <h3>Contato</h3>
+
+            <div class="form-group">
+                <label for="WhatsApp">WhatsApp:</label>
+                <input type="text" class="form-control" id="WhatsApp" name="WhatsApp" value="@Model.WhatsApp" />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="row g-3">
+
+                <div class="col">
+                    <label for="Fone1">Fone-1:</label>
+                    <input type="text" class="form-control" id="Fone1" name="Fone1" value="@Model.Fone1" />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="Fone2">Fone-2:</label>
+                    <input type="text" class="form-control" id="Fone2" name="Fone2" value="@Model.Fone2" />
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label for="Fone3">Fone-3:</label>
+                    <input type="text" class="form-control" id="Fone3" name="Fone3" value="@Model.Fone3" />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
         </div>
 
-        <!-- Adicione mais campos conforme necessário -->
+        <br>
+        <!-- Seção: Classificação -->
+        <div>
+            <h3>Classificação</h3>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="Cliente" asp-for="Classificacao" value="Cliente">
+                <label class="form-check-label" asp-for="Classificacao" for="Cliente">Cliente</label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="Fornecedor" asp-for="Classificacao" value="Fornecedor">
+                <label class="form-check-label" asp-for="Classificacao" for="Fornecedor">Fornecedor</label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="Funcionario" asp-for="Classificacao"
+                    value="Funcionario">
+                <label class="form-check-label" asp-for="Classificacao" for="Funcionario">Funcionário</label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="Vendedor" asp-for="Classificacao" value="Vendedor">
+                <label class="form-check-label" asp-for="Classificacao" for="Vendedor">Vendedor</label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="Corretor" asp-for="Classificacao" value="Corretor">
+                <label class="form-check-label" asp-for="Classificacao" for="Corretor">Corretor</label>
+            </div>
+        </div>
+
+        <br>
+        <!-- Seção: Observações -->
+        <div>
+            <h3>Observações</h3>
+
+            <div class="form-group">
+                <label for="Observacoes">Observações:</label>
+                <textarea class="form-control" id="Observacoes" name="Observacoes"
+                    rows="3">@Model.Observacoes</textarea>
+            </div>
+        </div>
+
+        <br>
 
         <button type="submit" class="btn btn-primary">Salvar</button>
-        <a class="btn btn-secondary" asp-action="Detalhes" asp-route-id="Id">Cancelar</a>
+        <a class="btn btn-secondary" asp-action="Detalhes" asp-route-id="@Model.Id">Cancelar</a>
     </form>
 </div>

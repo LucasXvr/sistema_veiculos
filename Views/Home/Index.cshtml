@@ -18,21 +18,24 @@
 <div class="container mt-4">
     <h1 class="text-center mb-4">Bem-vindo à E2 Motors!</h1>
     <div class="row">
-        <h4 class="text-center mb-4">Carros Adicionados Recentemente</h4>
-        @foreach (var veiculo in Model.OrderByDescending(v => v.DtCadastro).Take(3))
+        @if (Model.Count > 0)
         {
-            <div class="col-md-4 mb-4">
-                <div class="card card-zoom card-link">
-                    <!-- Mostra apenas a imagem do veículo, substituindo a lógica conforme necessário -->
-                    <img src="@Url.Content($"~/images/uploads/{veiculo.Fotos.FirstOrDefault()?.NomeArquivo ?? "placeholder.jpg"}")"
-                        alt="Carro Destaque" class="img-fluid img-zoom">
-                    <div class="card-body">
-                        <h5 class="card-title">@($"{veiculo.MarcaModeloVeiculo} {veiculo.FabricacaoVeiculo} - {veiculo.CategoriaVeiculo} {veiculo.CorVeiculo}")</h5>
-                        <a href="@Url.Action("Detalhes", "Veiculo", new { id = veiculo.Id })"
-                            class="btn btn-primary stretched-link">Ver Detalhes</a>
+            <h4 class="text-center mb-4">Carros Adicionados Recentemente</h4>
+            @foreach (var veiculo in Model.OrderByDescending(v => v.DtCadastro).Take(3))
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card card-zoom card-link">
+                        <!-- Mostra apenas a imagem do veículo, substituindo a lógica conforme necessário -->
+                        <img src="@Url.Content($"~/images/uploads/{veiculo.Fotos.FirstOrDefault()?.NomeArquivo ?? "placeholder.jpg"}")"
+                            alt="Carro Destaque" class="img-fluid img-zoom">
+                        <div class="card-body">
+                            <h5 class="card-title">@($"{veiculo.MarcaModeloVeiculo} {veiculo.FabricacaoVeiculo} - {veiculo.CategoriaVeiculo} {veiculo.CorVeiculo}")</h5>
+                            <a href="@Url.Action("Detalhes", "Veiculo", new { id = veiculo.Id })"
+                                class="btn btn-primary stretched-link">Ver Detalhes</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         }
     </div>
 </div>

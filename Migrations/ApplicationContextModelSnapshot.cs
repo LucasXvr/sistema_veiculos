@@ -20,19 +20,77 @@ namespace SistemaVeiculos.Migrations
 
             modelBuilder.Entity("Cliente", b =>
                 {
-                    b.Property<int>("ClienteId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CEP")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CPFCNPJ")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Classificacao")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Complemento")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Email")
                         .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Endereco")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Fone1")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Fone2")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Fone3")
                         .HasColumnType("longtext");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("ClienteId");
+                    b.Property<string>("NomeFantasia")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Numero")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Observacoes")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("RGIE")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("WhatsApp")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Cliente");
                 });
@@ -86,6 +144,9 @@ namespace SistemaVeiculos.Migrations
                     b.Property<string>("ChassiVeiculo")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CombustivelVeiculo")
                         .IsRequired()
@@ -171,6 +232,8 @@ namespace SistemaVeiculos.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClienteId");
+
                     b.ToTable("Veiculo");
                 });
 
@@ -183,6 +246,22 @@ namespace SistemaVeiculos.Migrations
                         .IsRequired();
 
                     b.Navigation("Veiculo");
+                });
+
+            modelBuilder.Entity("Veiculo", b =>
+                {
+                    b.HasOne("Cliente", "Cliente")
+                        .WithMany("Veiculos")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+                });
+
+            modelBuilder.Entity("Cliente", b =>
+                {
+                    b.Navigation("Veiculos");
                 });
 
             modelBuilder.Entity("Veiculo", b =>

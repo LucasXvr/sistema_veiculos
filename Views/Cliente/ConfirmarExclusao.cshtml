@@ -1,0 +1,25 @@
+@model Cliente
+
+@{
+    ViewData["Title"] = "Confirmar Exclusão";
+}
+
+<div class="container mt-4">
+    <h2>Confirmar Exclusão - Cliente @Model.Nome</h2>
+
+    <dl class="row">
+        <dt class="col-sm-2">Id</dt>
+        <dd class="col-sm-10">@Model.Id</dd>
+
+    </dl>
+
+    <h5>Você está prestes a excluir o cliente @Model.Nome. Tem certeza de que deseja continuar?</h5>
+
+    <form asp-action="Excluir" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+    </form>
+
+    <br>
+    <a class="btn btn-secondary" asp-action="Detalhes" asp-route-id="@Model.Id">Cancelar</a>
+</div>
