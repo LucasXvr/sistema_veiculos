@@ -15,12 +15,16 @@ public class Veiculo
     public string Unidade { get; set; }
 
     [Required(ErrorMessage = "O campo Preço de Custo é obrigatório.")]
+    [DataType(DataType.Currency, ErrorMessage = "O valor inserido não é válido para Preço de Custo.")]
+    [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
     public decimal PrCusto { get; set; }
 
     [Required(ErrorMessage = "O campo Margem é obrigatório.")]
     public decimal Margem { get; set; }
 
     [Required(ErrorMessage = "O campo Preço de Venda é obrigatório.")]
+    [DataType(DataType.Currency, ErrorMessage = "O valor inserido não é válido para Preço de Venda.")]
+    [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
     public decimal PrVenda { get; set; }
 
     [Required(ErrorMessage = "O campo NCM é obrigatório.")]
