@@ -114,7 +114,7 @@ public class VeiculoController : Controller
             }
             // Se houver erros de validação
             TempData["MensagemErro"] = "Falha ao salvar o veículo. Verifique os erros de validação.";
-            return RedirectToAction("Criar", veiculo);
+            return View(veiculo);
         }
         catch (Exception ex)
         {
