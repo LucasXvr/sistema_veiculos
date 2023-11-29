@@ -1,4 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using System;
 
 public class ApplicationContext : DbContext
 {
@@ -6,36 +9,8 @@ public class ApplicationContext : DbContext
     public DbSet<Veiculo> Veiculo { get; set; }
     public DbSet<Foto> Fotos { get; set; }
 
-    private readonly IConfiguration _configuration;
-
-    public ApplicationContext(DbContextOptions<ApplicationContext> options, IConfiguration configuration)
-        : base(options)
+    public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
     {
-        _configuration = configuration;
-    }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        if (!optionsBuilder.IsConfigured)
-        {
-            try
-            {
-                var connectionString = _configuration.GetConnectionString("Default");
-
-                optionsBuilder.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 29)))
-                    .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
-                    .EnableSensitiveDataLogging()
-                    .EnableDetailedErrors();
-
-                optionsBuilder.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 29)),
-                    mySqlOptions => mySqlOptions.EnableRetryOnFailure());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Erro ao configurar o DbContext: {ex.Message}");
-                throw;
-            }
-        }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
