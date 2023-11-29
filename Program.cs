@@ -15,7 +15,6 @@ builder.Logging.AddConsole();
 builder.Configuration.AddJsonFile("appsettings.json");
 builder.Configuration.AddJsonFile("appsettings.secret.json", optional: true, reloadOnChange: true);
 
-// Altere a configuração da string de conexão do MySQL
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<ApplicationContext>(options =>
