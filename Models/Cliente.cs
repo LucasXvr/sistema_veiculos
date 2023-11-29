@@ -5,8 +5,6 @@ public class Cliente
     [Key]
     public int Id { get; set; }
 
-    public int ClienteId { get; set; }
-
     [Required(ErrorMessage = "O campo Nome é obrigatório.")]
     public string Nome { get; set; }
 

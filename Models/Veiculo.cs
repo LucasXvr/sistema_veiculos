@@ -99,8 +99,6 @@ public class Veiculo
     public string EspecieVeiculo { get; set; }
 
     public string Observacoes { get; set; }
-    public int ClienteId { get; set; }
-    public Cliente Cliente { get; set; }
 }
 
 public class Foto

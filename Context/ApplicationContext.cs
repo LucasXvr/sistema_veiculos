@@ -45,9 +45,9 @@ public class ApplicationContext : DbContext
             .WithMany(v => v.Fotos)
             .HasForeignKey(f => f.VeiculoId);
 
-        modelBuilder.Entity<Veiculo>()
-            .HasOne(v => v.Cliente)
-            .WithMany(c => c.Veiculos)
-            .HasForeignKey(v => v.ClienteId);
+        // modelBuilder.Entity<Veiculo>()
+        //     .HasOne(v => v.Cliente)
+        //     .WithMany(c => c.Veiculos)
+        //     .HasForeignKey(v => v.ClienteId);
     }
 }
