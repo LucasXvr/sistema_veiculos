@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Logging.AddConsole();
 
-// Configuração para ler do appsettings.json e appsettings.secret.json
+
 builder.Configuration.AddJsonFile("appsettings.json");
 builder.Configuration.AddJsonFile("appsettings.secret.json", optional: true, reloadOnChange: true);
 
