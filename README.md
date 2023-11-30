@@ -5,10 +5,10 @@ Desenvolvimento completo de um sistema de gerenciamento de veículos, denominado
 ## Recursos Principais
 
 Permite os seguintes recursos de gerenciamento de informações.
--Inserção
--Edição
--Exclusão
-E inclui também a visualização detalhada de informações sobre os veículos, incluindo características, preços e fotos.
+- Inserção.
+- Edição.
+- Exclusão.
+- E inclui também a visualização detalhada de informações sobre os veículos, incluindo características, preços e fotos.
 
 ## Capturas de Tela
 
@@ -26,5 +26,5 @@ Neste projeto, foram utilizadas as seguintes tecnologias e bibliotecas:
 
 ## Link do Deploy
 
-Deploy feito na plataforma Azure da Microsoft, segue abaixo o link:
+Deploy feito na plataforma Azure da Microsoft, segue o link:
 [Link do Site](https://e2motors.azurewebsites.net/)
