@@ -35,6 +35,14 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.Use(async (context, next) =>
+{
+    // Log detalhes da requisição
+    // Exemplo: Console.WriteLine($"{DateTime.Now} - {context.Request.Path}");
+    Console.WriteLine($"{DateTime.Now} - {context.Request.Path}");
+    await next.Invoke();
+});
+
 app.UseDeveloperExceptionPage();
 
 app.UseStaticFiles();
