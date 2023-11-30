@@ -12,9 +12,14 @@ Permite os seguintes recursos de gerenciamento de informações.
 
 ## Capturas de Tela
 
-![Tela Inicial](wwwroot/screenshots/PaginaInicial.png)
-![Detalhes do Filme](wwwroot/screenshots/PaginaVeiculos.png)
-![Detalhes da Minha Lista](wwwroot/screenshots/AdicionarVeiculos.png)
+![Página Inicial](wwwroot/screenshots/PaginaInicial.png)
+![Página de Veículos](wwwroot/screenshots/PaginaVeiculos.png)
+![Adicionar Veículos](wwwroot/screenshots/AdicionarVeiculos.png)
+![Detalhes 01](wwwroot/screenshots/Detalhes01.png)
+![Detalhes 02](wwwroot/screenshots/Detalhes02.png)
+![Detalhes 03](wwwroot/screenshots/Detalhes03.png)
+![Detalhes 04](wwwroot/screenshots/Detalhes04.png)
+![Editar Página](wwwroot/screenshots/Editar.png)
 
 ## Tecnologias Utilizadas
 
