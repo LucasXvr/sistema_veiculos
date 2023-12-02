@@ -94,7 +94,7 @@ public class VeiculoController : Controller
 
                 // Redirecionar para a página de detalhes ou outra ação conforme necessário
                 TempData["MensagemSucesso"] = "Veículo salvo com sucesso!";
-                return RedirectToAction("Detalhes", new { id = veiculo.Id });
+                return RedirectToAction("Index");
             }
             else
             {
