@@ -2,4 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/adilson/public_html/
-    - /bin/cp -R wwwroot/* $DEPLOYPATH
+    - dotnet publish -c Release -o published-app
+    - cp -R published-app/* $DEPLOYPATH
