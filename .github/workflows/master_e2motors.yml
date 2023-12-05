@@ -28,7 +28,6 @@ jobs:
 
       - name: Deploy to cPanel
         run: |
-          export DEPLOYPATH=./deploy/
-          mkdir -p $DEPLOYPATH
-          cp -R ${{env.DOTNET_ROOT}}/myapp/* $DEPLOYPATH
+          export DEPLOYPATH=/home/adilson/public_html/
+          cp -R $GITHUB_WORKSPACE/${{env.DOTNET_ROOT}}/myapp/* $DEPLOYPATH
           dotnet $DEPLOYPATH/SistemaVeiculos.dll
