@@ -50,4 +50,4 @@ jobs:
           wget https://github.com/LucasXvr/SistemaVeiculos/actions/artifacts/branch/master/download?job=build -O build-artifact.zip
           unzip build-artifact.zip -d $DEPLOYPATH
           cd $DEPLOYPATH
-          dotnet SeuApp.dll
+          dotnet SistemaVeiculos.dll
