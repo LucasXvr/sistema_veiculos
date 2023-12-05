@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: windows-latest
+  build-and-deploy:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -26,19 +26,9 @@ jobs:
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
-        with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
-
-  trigger-deployment:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Trigger deployment
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          event-type: deploy
+      - name: Deploy to cPanel
+        run: |
+          export DEPLOYPATH=/home/adilson/public_html/
+          cd $DEPLOYPATH
+          cp -R ${{env.DOTNET_ROOT}}/myapp/* $DEPLOYPATH
+          dotnet $DEPLOYPATH/SistemaVeiculos.dll
