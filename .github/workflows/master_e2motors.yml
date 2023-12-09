@@ -28,7 +28,6 @@ jobs:
 
       - name: Deploy to cPanel
         run: |
-          export DEPLOYPATH=./deploy/
-          mkdir -p $DEPLOYPATH
-          cp -R $GITHUB_WORKSPACE/SistemaVeiculos/bin/Release/net8.0/* $DEPLOYPATH
-          dotnet $DEPLOYPATH/SistemaVeiculos.dll
+          - export DEPLOYPATH=/home/adilson/public_html/
+          - dotnet publish -c Release -o published-app
+          - cp -R published-app/* $DEPLOYPATH
