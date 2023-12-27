@@ -1,6 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/adilson/public_html/
-    - dotnet publish -c Release -o published-app
-    - cp -R published-app/* $DEPLOYPATH
