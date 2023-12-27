@@ -5,6 +5,7 @@ Desenvolvimento completo de um sistema de gerenciamento de veículos, denominado
 ## Recursos Principais
 
 Permite os seguintes recursos de gerenciamento de informações.
+
 - Inserção.
 - Edição.
 - Exclusão.
@@ -28,8 +29,3 @@ Neste projeto, foram utilizadas as seguintes tecnologias e bibliotecas:
 - **Front-end:** HTML5, CSS3, Booststrap4, JavaScript, RazorPages.
 - **Back-end:** C#, ASP.NET Core MVC, Entity Framework Core.
 - **Banco de dados:** MySQL.
-
-## Link do Deploy
-
-Deploy feito na plataforma Azure da Microsoft, segue o link:
-[Link do Site](https://e2motors.azurewebsites.net/)
