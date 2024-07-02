@@ -1,6 +1,6 @@
-# E2Motors - Um site de Gerenciamento de Veículos.
+# MotorHub - Um CRUD de Gerenciamento de Veículos.
 
-Desenvolvimento completo de um sistema de gerenciamento de veículos, denominado E2Motors.
+Desenvolvimento de um CRUD de gerenciamento de veículos, denominado MotorHub.
 
 ## Recursos Principais
 
